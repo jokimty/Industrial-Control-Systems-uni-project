@@ -1,0 +1,16 @@
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\bin\Debug\net8.0-windows\PCS_GUI.exe
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\bin\Debug\net8.0-windows\PCS_GUI.deps.json
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\bin\Debug\net8.0-windows\PCS_GUI.runtimeconfig.json
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\bin\Debug\net8.0-windows\PCS_GUI.dll
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\bin\Debug\net8.0-windows\PCS_GUI.pdb
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\obj\Debug\net8.0-windows\PCS_GUI.Form1.resources
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\obj\Debug\net8.0-windows\PCS_GUI.csproj.GenerateResource.cache
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\obj\Debug\net8.0-windows\PCS_GUI.GeneratedMSBuildEditorConfig.editorconfig
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\obj\Debug\net8.0-windows\PCS_GUI.AssemblyInfoInputs.cache
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\obj\Debug\net8.0-windows\PCS_GUI.AssemblyInfo.cs
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\obj\Debug\net8.0-windows\PCS_GUI.csproj.CoreCompileInputs.cache
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\obj\Debug\net8.0-windows\PCS_GUI.dll
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\obj\Debug\net8.0-windows\refint\PCS_GUI.dll
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\obj\Debug\net8.0-windows\PCS_GUI.pdb
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\obj\Debug\net8.0-windows\PCS_GUI.genruntimeconfig.cache
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\obj\Debug\net8.0-windows\ref\PCS_GUI.dll

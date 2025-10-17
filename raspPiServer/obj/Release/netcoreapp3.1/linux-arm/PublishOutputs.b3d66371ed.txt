@@ -1,0 +1,9 @@
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\raspPiServer\bin\Release\netcoreapp3.1\publish\linux-arm\raspPiServer
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\raspPiServer\bin\Release\netcoreapp3.1\publish\linux-arm\raspPiServer.dll
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\raspPiServer\bin\Release\netcoreapp3.1\publish\linux-arm\raspPiServer.deps.json
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\raspPiServer\bin\Release\netcoreapp3.1\publish\linux-arm\raspPiServer.runtimeconfig.json
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\raspPiServer\bin\Release\netcoreapp3.1\publish\linux-arm\raspPiServer.pdb
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\raspPiServer\bin\Release\netcoreapp3.1\publish\linux-arm\Microsoft.Win32.Registry.dll
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\raspPiServer\bin\Release\netcoreapp3.1\publish\linux-arm\System.Device.Gpio.dll
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\raspPiServer\bin\Release\netcoreapp3.1\publish\linux-arm\System.Security.AccessControl.dll
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\raspPiServer\bin\Release\netcoreapp3.1\publish\linux-arm\System.Security.Principal.Windows.dll

@@ -1,0 +1,5 @@
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\raspPiServer\bin\Release\netcoreapp3.1\publish\raspPiServer.exe
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\raspPiServer\bin\Release\netcoreapp3.1\publish\raspPiServer.dll
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\raspPiServer\bin\Release\netcoreapp3.1\publish\raspPiServer.deps.json
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\raspPiServer\bin\Release\netcoreapp3.1\publish\raspPiServer.runtimeconfig.json
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\raspPiServer\bin\Release\netcoreapp3.1\publish\raspPiServer.pdb
