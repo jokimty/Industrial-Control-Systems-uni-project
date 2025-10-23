@@ -1,39 +1,46 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Device.Gpio;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using System.Security.Cryptography;
+using System.Reflection;
 using System.Text;
 using System.Threading;
+
 namespace Server
 {
     internal class Program
     {
+        private static bool globalAlarmStatus;
+        private static object globalLock = new object();
+
         static void Main()
         {
 
-            /*
-            TODO:
-            Be able to handle disconnects from PCS GUI
-            */
 
             #region "Global" Variables
             // Can be modified to guarantee a maximum sampling time of once per <value>.
             // Real sampling time would be slightly longer due to computation.
-            int limitSamplingRate = 3000; 
+            int limitSamplingRate = 3000;
+            bool localAlarmStatus = false;
+            object lockObject = new object();
+            int messageCounter = 0;
+
             // Button controllers
             GpioController controllerBtn1;
             GpioController controllerBtn2;
             GpioController controllerBtn3;
             GpioController controllerBtn4;
+            // Light
+            GpioController controllerLight;
 
             // Pins, GPIO 25, 8, 7, 1
-            int buttonPin1 = 22;
+            //int buttonPin1 = 22;
             int buttonPin2 = 24;
             int buttonPin3 = 26;
             int buttonPin4 = 28;
+
+            int lightPin = 8; // Pin used to make the LED turn on.
 
             // Connection
             IPAddress ipAddress;
@@ -45,30 +52,25 @@ namespace Server
 
             #region Initialize Pins
             // Commented out for testing
-            /**/
-            controllerBtn1 = new GpioController(PinNumberingScheme.Board);
+            //controllerBtn1 = new GpioController(PinNumberingScheme.Board);
             controllerBtn2 = new GpioController(PinNumberingScheme.Board);
             controllerBtn3 = new GpioController(PinNumberingScheme.Board);
             controllerBtn4 = new GpioController(PinNumberingScheme.Board);
+            controllerLight = new GpioController();
 
-            controllerBtn1.OpenPin(buttonPin1, PinMode.Input);
+            //controllerBtn1.OpenPin(buttonPin1, PinMode.Input);
             controllerBtn2.OpenPin(buttonPin2, PinMode.Input);
             controllerBtn3.OpenPin(buttonPin3, PinMode.Input);
             controllerBtn4.OpenPin(buttonPin4, PinMode.Input);
-            /**/
+            controllerLight.OpenPin(lightPin, PinMode.Output);
             Console.WriteLine("Initalization done");
             #endregion
 
             #region Start Server
-            // Get Host IP Address that is used to establish a connection
-            // In this case, we get one IP address of localhost that is IP : 127.0.0.1
-            // If a host has multiple addresses, you will get a list of addresses
-            //IPHostEntry host = Dns.GetHostEntry("localhost");
-            //IPAddress ipAddress = host.AddressList[0];
 
             // Real IP for raspberry pi
             ipAddress = IPAddress.Parse("169.254.88.165");
-            
+
             // Testing locally
             //ipAddress = IPAddress.Parse("127.0.0.1");
 
@@ -92,74 +94,75 @@ namespace Server
             }
             #endregion
 
+            #region Alarm turn on/off thread
+
+
+
+            Thread alarmStatusThread = new Thread(
+                () => alarmStatusThreadMethod(controllerLight, lightPin));
+            alarmStatusThread.IsBackground = true;
+            alarmStatusThread.Start();
+            alarmStatusThread.Name = "Alarms Status thread";
+            #endregion
+
             while (true)
             {
                 try
                 {
-
-                    #region Read Measurements, Raise Alarm and Send Measurements
-                    // Figure out values to return
                     string sendString;
 
-                    // Comment to test code
-                    if (controllerBtn1.Read(buttonPin1) == PinValue.High)
-                    
-                    // Testing line
-                    //if(true)
+                    #region Read Measurements
+                    // Figure out values to return
+
+                    lock (globalLock)
                     {
-                        // Rest of RaiseAlarm and SendMeasurements in this if statment.
-                        // Cause if it returns a low pin value, the alarms are off anyways.
-                        bool alarm = false;
+                        localAlarmStatus = globalAlarmStatus;
+                    }
+                    if (localAlarmStatus)
+                    {
                         sendString = "1";
-                        
-                        // Comment to test code
-                        /**/
-                        if (controllerBtn2.Read(buttonPin2) == PinValue.High) { sendString += "1"; alarm = true; }
+
+                        // Pinvalue being low means the button is pressed down.
+                        if (controllerBtn2.Read(buttonPin2) == PinValue.Low) { sendString += "1"; }
                         else { sendString += "0"; }
-                        if (controllerBtn3.Read(buttonPin3) == PinValue.High) { sendString += "1"; alarm = true; }
+                        if (controllerBtn3.Read(buttonPin3) == PinValue.Low) { sendString += "1"; }
                         else { sendString += "0"; }
-                        if (controllerBtn4.Read(buttonPin4) == PinValue.High) { sendString += "1"; alarm = true; }
+                        if (controllerBtn4.Read(buttonPin4) == PinValue.Low) { sendString += "1"; }
                         else { sendString += "0"; }
-                        /**/
-                        sendString += "101";
-                        Console.WriteLine("Sending this message: " + sendString);
-
-                        if (alarm)
-                        {
-                            Console.WriteLine("raisin' an alarm!!1!");
-                        }
-
-
-                        // Get command to read and send values
-                        string data = null;
-                        byte[] bytes = new byte[1024];
-
-                        Console.WriteLine("Waiting to receive");
-                        int bytesRec = handler.Receive(bytes);
-
-                        data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
-                        if (data.IndexOf("True") == 0)
-                        {
-                            Console.WriteLine("test");
-                            // Send values
-                            byte[] msg = Encoding.ASCII.GetBytes(sendString);
-                            Console.WriteLine("Sending message " + sendString);
-                            if (handler != null)
-                            {
-                                handler.Send(msg);
-                                Thread.Sleep(limitSamplingRate);
-                            }
-                            else
-                            {
-                                Thread.Sleep(limitSamplingRate);
-                            }
-                        }
-                        else { Console.WriteLine("message not received i guess"); }
                     }
                     else
                     {
-                        Console.WriteLine("Alarms are turned off, no data being sent");
-                        Thread.Sleep(limitSamplingRate);
+                        sendString = "0000";
+                    }
+                    #endregion
+
+                    Console.WriteLine($"values: {sendString}");
+
+                    #region Send measurements
+                    // Get command to read and send values
+                    string data = null;
+                    byte[] bytes = new byte[1024];
+
+                    Console.WriteLine("Waiting to receive");
+                    int bytesRec = handler.Receive(bytes);
+
+                    data += Encoding.ASCII.GetString(bytes, 0, bytesRec);
+                    if (data.IndexOf("True") == 0)
+                    {
+                        // Send values
+                        byte[] msg = Encoding.ASCII.GetBytes(sendString);
+                        Console.WriteLine($"Sending message number {messageCounter}: " + sendString);
+                        if (handler != null)
+                        {
+                            handler.Send(msg);
+                            Thread.Sleep(limitSamplingRate);
+
+                            messageCounter++;
+                        }
+                        else
+                        {
+                            Thread.Sleep(limitSamplingRate);
+                        }
                     }
                     #endregion
                 }
@@ -173,8 +176,55 @@ namespace Server
             handler.Close();
             listener.Close();
             // Restart program, try to establish a new connection.
+            //controllerBtn1.ClosePin(buttonPin1);
+            controllerBtn2.ClosePin(buttonPin2);
+            controllerBtn3.ClosePin(buttonPin3);
+            controllerBtn4.ClosePin(buttonPin4);
+            controllerLight.ClosePin(lightPin);
             Main();
 
+        }
+
+        private static bool alarmStatusThreadMethod(GpioController light, int lightPin)
+        {
+            bool alarmStatus = false;
+            int buttonPin1 = 22;
+            GpioController controllerBtn1 = new GpioController(PinNumberingScheme.Board);
+            controllerBtn1.OpenPin(buttonPin1, PinMode.Input);
+            try
+            {
+                while (true)
+                {
+                    // Pinvalue being low means the button is pressed down.
+                    if (controllerBtn1.Read(buttonPin1) == PinValue.Low)
+                    {
+                        alarmStatus = !alarmStatus; // Toggle it
+                        lock (globalLock)
+                        {
+                            globalAlarmStatus = alarmStatus; // Pass to global variable for sharing
+                        }
+                        Console.WriteLine("\t\t\t\t\t\tFlipping light");
+                        Thread.Sleep(1000); // Prevent the LED from flashing when holding down the button
+                    }
+                    /*
+                    if (alarmStatus)
+                    {
+                        light.Write(lightPin, PinValue.High);
+                    } 
+                    else
+                    {
+                        light.Write(lightPin, PinValue.Low);
+                    }
+                    Thread.Sleep(1000);
+
+
+            */
+                }
+            }
+            finally
+            {
+                light.ClosePin(lightPin);
+            }
         }
     }
 }

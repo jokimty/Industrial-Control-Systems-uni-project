@@ -181,7 +181,7 @@ namespace PCS_GUI
                     {
                         // Append new alarm to both memory and file
                         allLines.Add(alarm.ToString());
-                        File.AppendAllText(alarmPath, alarm.ToString());
+                        File.AppendAllText(alarmPath, alarm.ToString() + Environment.NewLine);
                     }
                     else
                     {

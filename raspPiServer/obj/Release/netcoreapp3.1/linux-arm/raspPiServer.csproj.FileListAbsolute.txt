@@ -17,3 +17,4 @@ C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\raspPiServer\bin\R
 C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\raspPiServer\bin\Release\netcoreapp3.1\linux-arm\System.Security.Principal.Windows.dll
 C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\raspPiServer\obj\Release\netcoreapp3.1\linux-arm\raspPiServer.csproj.AssemblyReference.cache
 C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\raspPiServer\obj\Release\netcoreapp3.1\linux-arm\raspPiSe.6CB293E1.Up2Date
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\raspPiServer\obj\Release\netcoreapp3.1\linux-arm\raspPiServer.sourcelink.json

@@ -14,3 +14,4 @@ C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\obj\Debug\
 C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\obj\Debug\net8.0-windows\PCS_GUI.pdb
 C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\obj\Debug\net8.0-windows\PCS_GUI.genruntimeconfig.cache
 C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\obj\Debug\net8.0-windows\ref\PCS_GUI.dll
+C:\01_skole\Semester 5\Industrielle styresystemer\Prosjekt\c#\PCS_GUI\obj\Debug\net8.0-windows\PCS_GUI.sourcelink.json
