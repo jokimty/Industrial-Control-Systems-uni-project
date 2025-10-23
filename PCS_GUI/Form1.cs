@@ -20,7 +20,7 @@ namespace PCS_GUI
         bool connectionStatus = false;
         Socket socketHandler;
 
-        //Multitasking variables
+        // Multithreading variables
         Thread sensorThread;
         Thread loggerThread;
         Thread updateDGVThread;
@@ -34,14 +34,6 @@ namespace PCS_GUI
 
         public Form1()
         {
-            /*          TODO
-            
-            FetchNewMeasurements(); probably has many flaws that need to be ironed out
-            Sensor thread must be finished and actually made to take info from raspberry pi.
-            Raspberry pi program must be made.
-
-            */
-
             InitializeComponent();
 
             InitializeFiles(); // Must be initialized before the DataGridView!
