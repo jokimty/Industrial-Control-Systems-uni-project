@@ -6,3 +6,4 @@ The raspberrypi program uses 1 extra thread for the button that turns the alarm 
 
 Todo:
 
+Make sure the LED actually lights up when you get a working LED.
