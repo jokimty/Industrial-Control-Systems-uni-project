@@ -7,12 +7,12 @@
       "RelativeMoniker": "D:0:0:{C4828916-AD27-4FF3-BCE2-29EAEF225AA7}|PCS_GUI.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C4828916-AD27-4FF3-BCE2-29EAEF225AA7}|PCS_GUI.csproj|C:\\01_skole\\Semester 5\\Industrielle styresystemer\\Prosjekt\\c#\\PCS_GUI\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C4828916-AD27-4FF3-BCE2-29EAEF225AA7}|PCS_GUI.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{C4828916-AD27-4FF3-BCE2-29EAEF225AA7}|PCS_GUI.csproj|c:\\01_skole\\semester 5\\industrielle styresystemer\\prosjekt\\c#\\pcs_gui\\alarmclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C4828916-AD27-4FF3-BCE2-29EAEF225AA7}|PCS_GUI.csproj|solutionrelative:alarmclass.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C4828916-AD27-4FF3-BCE2-29EAEF225AA7}|PCS_GUI.csproj|C:\\01_skole\\Semester 5\\Industrielle styresystemer\\Prosjekt\\c#\\PCS_GUI\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C4828916-AD27-4FF3-BCE2-29EAEF225AA7}|PCS_GUI.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,13 +30,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "AlarmClass.cs",
               "DocumentMoniker": "C:\\01_skole\\Semester 5\\Industrielle styresystemer\\Prosjekt\\c#\\PCS_GUI\\AlarmClass.cs",
               "RelativeDocumentMoniker": "AlarmClass.cs",
               "ToolTip": "C:\\01_skole\\Semester 5\\Industrielle styresystemer\\Prosjekt\\c#\\PCS_GUI\\AlarmClass.cs",
               "RelativeToolTip": "AlarmClass.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAA1wAkAAAAdAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAwwBkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-09T09:45:02.299Z"
             },
@@ -48,14 +48,14 @@
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\01_skole\\Semester 5\\Industrielle styresystemer\\Prosjekt\\c#\\PCS_GUI\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAAAwCQAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-10-03T06:42:46.541Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Form1.cs [Design]",
               "DocumentMoniker": "C:\\01_skole\\Semester 5\\Industrielle styresystemer\\Prosjekt\\c#\\PCS_GUI\\Form1.cs",
               "RelativeDocumentMoniker": "Form1.cs",

@@ -27,16 +27,12 @@ namespace Server
             GpioController controllerBtn2;
             GpioController controllerBtn3;
             GpioController controllerBtn4;
-            // Light
-            GpioController controllerLight;
 
             // Pins, GPIO 25, 8, 7, 1
             int buttonPin1 = 22;
             int buttonPin2 = 24;
             int buttonPin3 = 26;
             int buttonPin4 = 28;
-
-            int lightPin = 8; // Pin used to make the LED turn on.
 
             // Connection
             IPAddress ipAddress;
@@ -51,13 +47,11 @@ namespace Server
             controllerBtn2 = new GpioController(PinNumberingScheme.Board);
             controllerBtn3 = new GpioController(PinNumberingScheme.Board);
             controllerBtn4 = new GpioController(PinNumberingScheme.Board);
-            controllerLight = new GpioController();
 
             controllerBtn1.OpenPin(buttonPin1, PinMode.InputPullUp);
             controllerBtn2.OpenPin(buttonPin2, PinMode.InputPullUp);
             controllerBtn3.OpenPin(buttonPin3, PinMode.InputPullUp);
             controllerBtn4.OpenPin(buttonPin4, PinMode.InputPullUp);
-            controllerLight.OpenPin(lightPin, PinMode.Output);
             Console.WriteLine("Initalization done");
             #endregion
 
@@ -90,7 +84,7 @@ namespace Server
 
             #region Turn alarms on/off thread
             Thread alarmStatusThread = new Thread(
-                () => AlarmStatusThreadMethod(controllerBtn1, buttonPin1, controllerLight, lightPin));
+                () => AlarmStatusThreadMethod(controllerBtn1, buttonPin1));
             alarmStatusThread.IsBackground = true;
             alarmStatusThread.Start();
             alarmStatusThread.Name = "Alarms Status thread";
@@ -111,6 +105,7 @@ namespace Server
                     }
                     if (localAlarmStatus)
                     {
+
                         sendString = "1";
 
                         // Pinvalue being low means the button is pressed down.
@@ -169,11 +164,10 @@ namespace Server
             controllerBtn2.ClosePin(buttonPin2);
             controllerBtn3.ClosePin(buttonPin3);
             controllerBtn4.ClosePin(buttonPin4);
-            controllerLight.ClosePin(lightPin);
             Main();
         }
 
-        private static void AlarmStatusThreadMethod(GpioController button, int buttonPin, GpioController light, int lightPin)
+        private static void AlarmStatusThreadMethod(GpioController button, int buttonPin)
         {
             bool alarmStatus = false;
             try
@@ -189,25 +183,15 @@ namespace Server
                             globalAlarmStatus = alarmStatus; // Pass to global variable for sharing
                         }
                         if (alarmStatus) { Console.WriteLine("Alarms turned ON"); }
-                        else { Console.WriteLine("Alarms turned ON"); }
+                        else { Console.WriteLine("Alarms turned OFF"); }
                     }
-                    if (alarmStatus)
-                    {
-                        light.Write(lightPin, PinValue.High);
-                    }
-                    else
-                    {
-                        light.Write(lightPin, PinValue.Low);
-                    }
-                    Thread.Sleep(1000); // Prevent the LED from flashing when holding down the button
+                    Thread.Sleep(1000); 
                 }
             }
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
             }
-            
         }
-    
     }
 }

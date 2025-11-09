@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("raspPiServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+72d606da6b560a1153381ef8edb7797d5603e28e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3fbc9752460aed183a1e8ad96259382be04e4cba")]
 [assembly: System.Reflection.AssemblyProductAttribute("raspPiServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("raspPiServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
